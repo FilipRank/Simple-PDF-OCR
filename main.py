@@ -3,6 +3,7 @@ from tkinter import filedialog, messagebox
 import os
 import threading
 import ocrmypdf
+from ocrmypdf._options import OcrOptions, ProcessingMode
 
 def worker(input_files, output_dir):
     success_count = 0
@@ -20,14 +21,13 @@ def worker(input_files, output_dir):
             )
 
 
-            ocrmypdf.ocr(
-                input_file_or_options=pdf,
+            options = OcrOptions(
+                input_file=pdf,
                 output_file=output_pdf,
-                deskew=True,
-                clean=True,
-                force_ocr=True,
-                rotate_pages=True
+                mode=ProcessingMode.force,
+                skip_big=True
             )
+            ocrmypdf.ocr(options)
 
             success_count += 1
         except Exception as e:
