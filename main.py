@@ -29,8 +29,9 @@ def worker(input_files, output_dir):
                 input_file=pdf,
                 output_file=output_pdf,
                 mode=ProcessingMode.force,
-                skip_big=True,
-                ocr_engine="tesseract"
+                ocr_engine="tesseract",
+                max_image_mpixels=1000,
+                use_threads=True
             )
             ocrmypdf.ocr(options)
 
