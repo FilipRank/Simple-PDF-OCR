@@ -26,11 +26,13 @@ This project uses Python 3.12.10.
 
     `pip install -r requirements.txt`
 
-3. To run:
+3. Extract the `bin` folder to the root of the project. Make sure the folder is named `bin`, not something else.
+
+4. To run:
 
     `python main.py`
 
-4. To build using PyInstaller:
+5. To build using PyInstaller:
 
     `pip install pyinstaller`
 
