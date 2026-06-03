@@ -34,4 +34,4 @@ This project uses Python 3.12.10.
 
     `pip install pyinstaller`
 
-    `pyinstaller --onefile --name Simple-PDF-OCR main.py`    
+    `pyinstaller Simple-PDF-OCR.spec`    
