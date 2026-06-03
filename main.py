@@ -2,8 +2,12 @@ import tkinter as tk
 from tkinter import filedialog, messagebox
 import os
 import threading
+import traceback
 import ocrmypdf
 from ocrmypdf._options import OcrOptions, ProcessingMode
+from setup_env import setup_bundled_tools
+
+setup_bundled_tools()
 
 def worker(input_files, output_dir):
     success_count = 0
@@ -25,14 +29,19 @@ def worker(input_files, output_dir):
                 input_file=pdf,
                 output_file=output_pdf,
                 mode=ProcessingMode.force,
-                skip_big=True
+                skip_big=True,
+                ocr_engine="tesseract"
             )
             ocrmypdf.ocr(options)
 
             success_count += 1
         except Exception as e:
             print(f"Failed on file: {filename}")
-            print(e)
+            print(f"Exception type: {type(e).__name__}")
+            print(f"Exception message: {e}")
+            print(f"TESSDATA_PREFIX: {os.environ.get('TESSDATA_PREFIX')}")
+            print(f"PATH contains tesseract: {'tesseract' in os.environ.get('PATH', '')}")
+            traceback.print_exc()
         
     status_label.config(
         text=f"Finished {success_count}/{len(input_files)} files"
