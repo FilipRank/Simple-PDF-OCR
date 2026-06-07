@@ -2,7 +2,7 @@ Simple PDF OCR provides a user-friendly interface for performing OCR on multiple
 
 To download the application for your operating system, click on the latest release, which you can find in the release tab on the right-hand side of the Github interface.
 
-The application supports doing OCR on multiple PDFs at simultaneously.
+The application supports doing OCR on multiple PDFs simultaneously.
 
 # Running from source
 
